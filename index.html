@@ -3,16 +3,19 @@
   <head>
     <meta charset="utf-8">
     <title>GoogleMap API サンプル</title>
-    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCPtbD0ZfOUoI2Hv2Ra7GNZw1WSJohuSXg&sensor=false">
-
-    </script>
     <script type="text/javascript" src="./base.js">
 
     </script>
   </head>
   <body>
-    <div id='maps_canvas' style='width:500px;height:500px;'>
+    <div id='map' style='width:500px;height:500px;'>
 
     </div>
+    <ul>
+      <li>lat: <span id="lat"></span></li>
+      <li>lng: <span id="lng"></span></li>
+    </ul>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCPtbD0ZfOUoI2Hv2Ra7GNZw1WSJohuSXg&sensor=false&callback=initMap" async defer></script>
+
   </body>
 </html>

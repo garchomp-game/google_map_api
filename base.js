@@ -1,21 +1,34 @@
-function init(){　
-  var latlng = new google.maps.LatLng(35.70564,139.751891);// 12行目
+function initMap(){　
 
-  var options = {
+  var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 17,
-    center: latlng,
+    center: {lat: 35.70564, lng: 139.751891},
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     overviewMapControl: true,
     overviewMapControlOptions: {
       opened: true
     }
-  };
+  });
 
-  var map = new google.maps.Map(document.getElementById('maps_canvas'), options);
-  new google.maps.Marker({
-    position: latlng,
+  map.addListener('click', function(e) {
+    getClickLatLng(e.latLng, map);
+  });
+}
+
+
+function getClickLatLng(lat_lng, map) {
+
+  // 座標を表示
+  document.getElementById('lat').textContent = lat_lng.lat();
+  document.getElementById('lng').textContent = lat_lng.lng();
+
+  // マーカーを設置
+  var marker = new google.maps.Marker({
+    position: lat_lng,
     map: map
   });
-};
 
-google.maps.event.addDomListener(window, 'load', init);
+  // 座標の中心をずらす
+  // http://syncer.jp/google-maps-javascript-api-matome/map/method/panTo/
+  map.panTo(lat_lng);
+}
